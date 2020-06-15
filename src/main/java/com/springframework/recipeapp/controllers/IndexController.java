@@ -1,12 +1,12 @@
 package com.springframework.recipeapp.controllers;
 
 import com.springframework.recipeapp.services.RecipeService;
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.java.Log;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@Slf4j
+@Log
 @Controller
 public class IndexController {
 
