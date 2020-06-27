@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Recipe Home</title>
+
+        <!-- CSS only -->
+        <link rel="stylesheet"
+              href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+              integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+              crossorigin="anonymous">
+
+        <!-- JS, Popper.js, and jQuery -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+                integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+                crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+                integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+                crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+                integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+                crossorigin="anonymous"></script>
+
+    </head>
+    <body>
+        <div class="container-fluid" align="center" style="margin-top: 20px">
+            <div class="card bg-danger col-md-6 col-md-offset-3">
+                <h5 align="left" class="p-3 mb-2 bg-dark text-white" th:text="${recipe.description}">
+                    Recipe Description Here!</h5>
+                <div class="bg-white">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <h5>Categories:</h5>
+                        </div>
+                        <div class="col-md-9" align="left">
+                            <ul>
+                                <li th:each="cat : ${recipe.categories}" th:text="${cat.description}">cat one</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <h5>Prep Time:</h5>
+                        </div>
+                        <div class="col-md-3">
+                            <p th:text="${recipe.prepTime} + ' min'">30 min</p>
+                        </div>
+                        <div class="col-md-3">
+                            <h5>Difficulty:</h5>
+                        </div>
+                        <div class="col-md-3">
+                            <p th:text="${recipe.difficulty}">Easy</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <h5>Cooktime:</h5>
+                        </div>
+                        <div class="col-md-3">
+                            <p th:text="${recipe.cookTime} + ' min'">30 min</p>
+                        </div>
+                        <div class="col-md-3">
+                            <h5>Servings:</h5>
+                        </div>
+                        <div class="col-md-3">
+                            <p th:text="${recipe.servings}">4</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <h5>Source:</h5>
+                        </div>
+                        <div class="col-md-3">
+                            <p th:text="${recipe.source}">30 min</p>
+                        </div>
+                        <div class="col-md-3">
+                            <h5>URL:</h5>
+                        </div>
+                        <div class="col-md-3">
+                            <p th:text="${recipe.url}">http://www.example.com</p>
+                        </div>
+                    </div>
+                </div>
+                <br/>
+            </div>
+            <br/>
+            <div class="card bg-danger col-md-6 col-md-offset-3">
+                <h5 align="left" class="p-3 mb-2 bg-dark text-white" th:text="Ingredients">
+                    Recipe Ingredients Here!</h5>
+                <div class="bg-white" align="left">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <ul th:each="ingridients: ${recipe.ingredients}">
+                                <li th:text="${ingridients.amount} + ' ' + ${ingridients.uom.description}
+                                + ' ' + ${ingridients.description}">1 Cup of milk</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <br/>
+            </div>
+
+            <br/>
+            <div class="card bg-danger col-md-6 col-md-offset-3">
+                <h5 align="left" class="p-3 mb-2 bg-dark text-white" th:text="Directions">
+                    Recipe Directions Here!</h5>
+                <div class="bg-white" align="left">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p th:text="${recipe.directions}">
+                                text text text text text text text text text text text text text text text text
+                                text text text text text text text text text text text text text text text text
+                                text text text text text text text text text text text text text</p>
+                        </div>
+                    </div>
+                </div>
+                <br/>
+            </div>
+
+            <br/>
+            <div class="card bg-danger col-md-6 col-md-offset-3">
+
+                <h5 align="left" class="p-3 mb-2 bg-dark text-white" th:text="Notes">
+                    Recipe Notes Here!</h5>
+                <div class="bg-white" align="left">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p th:text="${recipe.notes.recipeNotes}">
+                                text text text text text text text text text text text text text text text text
+                                text text text text text text text text text text text text text text text text
+                                text text text text text text text text text text text text text</p>
+                        </div>
+                    </div>
+                </div>
+                <br/>
+            </div>
+        </div>
+    </body>
+</html>
