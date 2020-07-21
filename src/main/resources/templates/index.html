@@ -35,6 +35,7 @@
                                 <th scope="col">ID</th>
                                 <th scope="col">Description</th>
                                 <th scope="col">View</th>
+                                <th scope="col">Update</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -42,6 +43,7 @@
                                 <td th:text="${recipe.id}">test</td>
                                 <td th:text="${recipe.description}">test</td>
                                 <td><a href="#" th:href="@{'recipe/' + ${recipe.id} + '/show'}">View</a></td>
+                                <td><a href="#" th:href="@{'recipe/' + ${recipe.id} + '/update'}">Update</a></td>
                             </tr>
                         </tbody>
                     </table>
