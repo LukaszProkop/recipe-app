@@ -27,7 +27,7 @@
             <div class="col-md-6 col-md-offset-3">
                 <form th:object="${ingredient}" th:action="@{'/recipe/' + ${ingredient.getRecipeId()} + '/ingredient'}" method="post">
                     <input type="hidden" th:field="*{id}"/>
-                    <input type="hidden" th:field="*{unitOfMeasure.id}"/>
+
                     <div class="card bg-danger">
                         <h5 align="left" class="p-3 mb-2 bg-dark text-white" th:text="'Edit Ingredient Information'">Edit
                             Ingredient Information</h5>
@@ -48,9 +48,8 @@
                                     <select class="form-control" name="uom.id">
                                         <option th:each="uomEach : ${uomList}"
                                                 th:value="${uomEach.id}"
-                                                th:selected="${uomEach.id.equals(ingredient.unitOfMeasure.id)}"
-                                                th:text="${uomEach.description}">Each
-                                        </option>
+                                                th:selected="${uomEach.id.equals(ingredient.uom.id)}"
+                                                th:text="${uomEach.description}">Each</option>
                                     </select>
                                 </div>
                             </div>

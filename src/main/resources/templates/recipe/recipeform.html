@@ -98,8 +98,8 @@
                             <div class="col-md-12 ">
                                 <h5 align="left" class="p-3 bg-dark text-white" th:text="Ingredients">
                                     Ingredients</h5>
-                                    <button type="button" onclick="window.location.href='http://google.pl';" style="float: right; margin-top: -55px; margin-right: 1%" class="btn btn-light">edit
-                                    </button>
+                                    <a class="btn btn-light" href="#" th:href="@{'/recipe/' + ${recipe.id} + '/ingredients'}" role="button" style="float: right; margin-top: -55px; margin-right: 1%" >view
+                                    </a>
                             </div>
                         </div>
                         <div class="card bg-danger">
@@ -113,7 +113,7 @@
                                             <li th:remove="all">1 Teaspoon of chocolate</li>
                                             <li th:each="ingredient : ${recipe.ingredients}"
                                                 th:text="${(ingredient.getAmount() +
-                                        ' ' + ingredient.unitOfMeasure.getDescription() +
+                                        ' ' + ingredient.uom.getDescription() +
                                         ' - ' + ingredient.getDescription())}">1 Teaspoon of Sugar
                                             </li>
                                         </ul>
