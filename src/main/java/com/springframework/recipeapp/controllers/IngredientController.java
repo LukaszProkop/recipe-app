@@ -3,6 +3,7 @@ package com.springframework.recipeapp.controllers;
 import com.springframework.recipeapp.commands.IngredientCommand;
 import com.springframework.recipeapp.commands.RecipeCommand;
 import com.springframework.recipeapp.commands.UnitOfMeasureCommand;
+import com.springframework.recipeapp.domain.Recipe;
 import com.springframework.recipeapp.services.IngredientService;
 import com.springframework.recipeapp.services.RecipeService;
 import com.springframework.recipeapp.services.UnitOfMeasureService;
@@ -82,5 +83,13 @@ public class IngredientController {
         log.debug("saved ingredient id:" + savedCommand.getId());
 
         return "redirect:/recipe/" + savedCommand.getRecipeId() + "/ingredient/" + savedCommand.getId() + "/show";
+    }
+
+    @GetMapping("recipe/{recipeId}/ingredient/{id}/delete")
+    public String deleteIngredient(@PathVariable String recipeId, @PathVariable String id){
+        log.debug("deleting ingredient id: " + id);
+        ingredientService.deleteById(Long.valueOf(recipeId), Long.valueOf(id));
+
+        return "redirect:/recipe/" + recipeId + "/ingredients";
     }
 }
