@@ -34,7 +34,9 @@ public class RecipeControllerTest {
         MockitoAnnotations.initMocks(this);
 
         controller = new RecipeController(recipeService);
-        mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
+        mockMvc = MockMvcBuilders.standaloneSetup(controller)
+                .setControllerAdvice(new ExceptionHandlerController())
+                .build();
     }
 
     @Test
@@ -61,8 +63,9 @@ public class RecipeControllerTest {
     }
 
     @Test
-    public void testRecipeNumberFormatException() throws Exception{
-        mockMvc.perform(get("/recipe/sfg/show"))
+    public void testGetRecipeNumberFormatException() throws Exception {
+
+        mockMvc.perform(get("/recipe/rrgh/show"))
                 .andExpect(status().isBadRequest())
                 .andExpect(view().name("400error"));
     }
